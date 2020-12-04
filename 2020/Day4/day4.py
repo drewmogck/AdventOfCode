@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Dec  3 08:40:17 2020
-
-@author: HB47810
+Advent of Code 2020
+Day 4
 """
 
 import pandas as pd
@@ -56,7 +55,7 @@ import re
 
 #
 # Using readlines() 
-path='D:/OneDrive - Halliburton/Reference/Advent of Code/2020/Day4/Day4.txt'
+path='Day4.txt'
 
 with open(path, "a") as a_file:
   a_file.write("\n")
@@ -330,7 +329,7 @@ for ppt in ppt_master:
     # input("Press Enter to continue...")
         
 df = pd.DataFrame(store_output, columns = ['passport', 'itempass', 'passportpass'])  
-df.to_csv('D:/OneDrive - Halliburton/Reference/Advent of Code/2020/Day4/output.csv')
+df.to_csv('output.csv')
 
 
        
