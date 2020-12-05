@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Dec  3 08:40:17 2020
+Advent of Code 2020
 
-@author: HB47810
+Day 3
 """
 
 import pandas as pd
@@ -11,7 +11,7 @@ import numpy as np
 ##PART 1
 
 # Using readlines() 
-file = open('D:/OneDrive - Halliburton/Reference/Advent of Code/2020/Day3/Day3.txt', 'r') 
+file = open('Day3.txt', 'r') 
 Lines = file.readlines() 
   
 
