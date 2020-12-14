@@ -5,7 +5,7 @@ Day 12
 """
 
 #read in data file, strip new line characters out
-Lines = [line.rstrip() for line in open('D:/OneDrive - Halliburton/Reference/Advent of Code/2020/Day12/Day12.txt')]
+Lines = [line.rstrip() for line in open('Day12.txt')]
 
 #position and direction initialize    
 loc = {'x':0, 'y':0, 'dir':90}
