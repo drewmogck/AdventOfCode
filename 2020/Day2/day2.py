@@ -6,7 +6,7 @@ Created on Wed Dec  2 08:36:09 2020
 """
 import pandas as pd
 
-data = pd.read_csv('D:/OneDrive - Halliburton/Reference/Advent of Code/2020/Day2/day2.csv', names=['key'])
+data = pd.read_csv('day2.csv', names=['key'])
 
 extract = data["key"].str.split(" ", expand = True) 
 
@@ -18,4 +18,4 @@ extract["max"]= minmax[1]
 
 extract['character']=extract[1].str.replace(":","")
 
-extract.to_csv('D:/OneDrive - Halliburton/Reference/Advent of Code/2020/Day2/day2_export.csv')
+extract.to_csv('day2_export.csv')
