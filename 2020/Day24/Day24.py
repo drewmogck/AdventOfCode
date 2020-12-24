@@ -67,41 +67,68 @@ def get_map(line):
     
 def flip(posx,posy): #1 is black, 0 is white
     if (posx, posy) in tiles:
-        if tiles[(posx, posy)]==1:
-           tiles[(posx, posy)]=0
-        elif tiles[(posx, posy)]==0:
-            tiles[(posx,posy)]=1
+        if tiles[(posx, posy)][0]==1:
+           tiles[(posx, posy)]=[0,0] #second part is placeholder for part 2's switch
+        elif tiles[(posx, posy)][0]==0:
+            tiles[(posx,posy)]=[1,0]
     else:
-        tiles[(posx, posy)]=1
+        tiles[(posx, posy)]=[1,0]
 
 for line in Lines:
     flip(get_map(line)[0], get_map(line)[1])
     
-print(sum(tiles.values()))#part 1 answer
+print(sum(j[0] for j in tiles.values()))#part 1 answer
 
 #part2:
 def count(x,y): #counts black tiles in surrounding
-    ne = tiles[(x+1, y+1)] if (x+1, y+1) in tiles else 0
-    nw = tiles[(x-1, y+1)] if (x-1, y+1) in tiles else 0
-    se = tiles[(x+1, y-1)] if (x+1, y-1) in tiles else 0
-    sw = tiles[(x-1, y-1)] if (x-1, y-1) in tiles else 0
-    e  = tiles[(x+2, y)] if (x+2, y) in tiles else 0
-    w  = tiles[(x-2, y)] if (x-2, y) in tiles else 0
+    ne = tiles[(x+1, y+1)][0] if (x+1, y+1) in tiles else 0
+    nw = tiles[(x-1, y+1)][0] if (x-1, y+1) in tiles else 0
+    se = tiles[(x+1, y-1)][0] if (x+1, y-1) in tiles else 0
+    sw = tiles[(x-1, y-1)][0] if (x-1, y-1) in tiles else 0
+    e  = tiles[(x+2, y)][0] if (x+2, y) in tiles else 0
+    w  = tiles[(x-2, y)][0] if (x-2, y) in tiles else 0
     return(ne+nw+se+sw+e+w)
 
 
 #loop through tiles and add surrounding tiles as white if they don't exist yet
-for tile in tiles.items():
-    x=tile[0][0]; y=tile[0][1]
-    if (x+1, y+1) not in tiles: tiles[(x+1, y+1)]=0 #ne
-    if (x-1, y+1) not in tiles: tiles[(x-1, y+1)]=0#nw
-    if (x+1, y-1) not in tiles: tiles[(x+1, y-1)]=0 #se
-    if (x-1, y-1) not in tiles: tiles[(x-1, y-1)]=0 #sw
-    if (x+2, y) not in tiles: tiles[(x+2, y)]=0 #e
-    if (x-2, y) not in tiles: tiles[(x-2, y)]=0 #w
+def add_offsets():
+    tiles_list=list(tiles)
+    for tile in tiles_list:
+        x=tile[0]; y=tile[1]
+        if (x+1, y+1) not in tiles: tiles[(x+1, y+1)]=[0,0] #ne
+        if (x-1, y+1) not in tiles: tiles[(x-1, y+1)]=[0,0]#nw
+        if (x+1, y-1) not in tiles: tiles[(x+1, y-1)]=[0,0] #se
+        if (x-1, y-1) not in tiles: tiles[(x-1, y-1)]=[0,0] #sw
+        if (x+2, y) not in tiles: tiles[(x+2, y)]=[0,0] #e
+        if (x-2, y) not in tiles: tiles[(x-2, y)]=[0,0] #w
 
 
+def switch():
+    add_offsets()
+    for tile in tiles:
+        if tiles[tile][0]==1: #blacktile
+            if count(tile[0], tile[1])==0 or count(tile[0], tile[1])>2:
+                tiles[tile][1]=-1 #flip black to white
+            else:
+                tiles[tile][1]=0 #keep same
+        elif tiles[tile][0]==0: #white tile
+            if count(tile[0], tile[1])==2:
+                tiles[tile][1]=1 #flip white to black
+            else:
+                tiles[tile][1]=0 #keep same
+                
+    for tile in tiles:
+        if tiles[tile][1]==0: 
+            pass
+        elif tiles[tile][1]==1: #make black
+            tiles[tile]=[1,0]
+        elif tiles[tile][1]==-1: #make white
+            tiles[tile]=[0,0]
+                
+days=100
 
-for tile in tiles:
-    tiles[tile]==1:
-        if count(tile[0], tile[1])==     
+for i in range(days):
+    switch()
+    
+print(sum(j[0] for j in tiles.values())) #part 2 answer
+                    
