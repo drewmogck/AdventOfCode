@@ -9,4 +9,4 @@
 
 * Day 3: Part 1: Pretty straightforward. Part 2: Got hung up trying to get too fancy storing things in a dictionary. Finally realized much simpler in this case just to store to list and busted out the answer. Initial code is messy, will clean up at later point for part 2, there is a much more streamlined way of doing this than duplicating the code but wanted to get the answer in and it was getting late. Back to it tomorrow...
 
-    *Day 3 edit: cleaned up part 2 to be simpler and use single function to run both O2 and CO2 numbers
+    * Day 3 edit: cleaned up part 2 to be simpler and use single function to run both O2 and CO2 numbers
