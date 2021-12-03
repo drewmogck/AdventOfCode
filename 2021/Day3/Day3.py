@@ -16,8 +16,6 @@ def count_bit(line, i, zeros, ones):
         ones+=1
     return zeros, ones
 
-
-
 gamma=""
 epsilon=""
 
@@ -52,87 +50,59 @@ print("Answer to part 1 is: "+str(gamma_dec*epsilon_dec))
 
 #PART 2#
 
-#initialize list for oxygen
-input = Lines #initialize with all values to start
+#Define function to run code for O2 generator or CO2 scrubber
 
-for i in range(len(Lines[0])):
-    output=[]
+def rating_calc(type):
+    #initialize list
+    input = Lines #initialize with all values to start
 
-    #initialize zeros and ones to 0
-    zeros=0
-    ones=0
+    for i in range(len(Lines[0])):
+        output=[]
 
-    for line in input:
-        zeros, ones = count_bit(line, i, zeros, ones) #count zeros and ones in column return result
-    
-    #print(zeros, ones)
+        #initialize zeros and ones to 0
+        zeros=0
+        ones=0
 
-    for line in input:
-        if zeros>ones: #more zeros
-            if line[i]=='0':
-                output.append(line)
-                #print(i, "line add", line, output)
+        for line in input:
+            zeros, ones = count_bit(line, i, zeros, ones) #count zeros and ones in column return result
 
-        elif ones>zeros: #more ones
-            if line[i]=='1':
-                output.append(line)
-        
-        elif ones==zeros:
-            if line[i]=='1':
-                output.append(line)
-                
-    print(i, output)
+        for line in input:
+            if zeros>ones: #more zeros
+                if type=='O2':
+                    if line[i]=='0':
+                        output.append(line)
+                elif type=='CO2':
+                    if line[i]=='1':
+                        output.append(line)
 
-    if len(output)==1:
-        break
-
-    input=output #new values
-
+            elif ones>zeros: #more ones
+                if type=='O2':
+                    if line[i]=='1':
+                        output.append(line)
+                elif type=='CO2':
+                    if line[i]=='0':
+                        output.append(line)
             
-       
-o2_rating = int(output[0],2) #oxygen generator rating
+            elif ones==zeros:
+                if type=='O2':
+                    if line[i]=='1':
+                        output.append(line)
+                elif type=='CO2':
+                    if line[i]=='0':
+                        output.append(line)
+                    
 
-#initialize list for co2 # there will be a better way to do this with function i am sure
+        if len(output)==1:
+            output=output[0]
+            break
 
-input = Lines #initialize with all values to start
+        input=output #new values
+    return int(output,2) #convert output to decimal
 
-for i in range(len(Lines[0])):
-    output=[]
-
-    #initialize zeros and ones to 0
-    zeros=0
-    ones=0
-
-    for line in input:
-        zeros, ones = count_bit(line, i, zeros, ones) #count zeros and ones in column return result
-    
-    #print(zeros, ones)
-
-    for line in input:
-        if zeros<ones: #fewer zeros
-            if line[i]=='0':
-                output.append(line)
-                #print(i, "line add", line, output)
-
-        elif ones<zeros: #fewer ones
-            if line[i]=='1':
-                output.append(line)
         
-        elif ones==zeros:
-            if line[i]=='0':
-                output.append(line)
-                
-    print(i, output)
-
-    if len(output)==1:
-        break
-
-    input=output #new values
-
-            
-       
-co2_rating = int(output[0],2) #CO2 scrubber rating
-
-print(o2_rating, co2_rating)
+o2_rating=rating_calc('O2')
+co2_rating= rating_calc('CO2')
 
 print("Part 2 answer is: "+str(o2_rating*co2_rating))
+
+
