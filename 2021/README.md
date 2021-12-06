@@ -22,3 +22,7 @@
 * Day 5:
     * Part 1: OK. Not too crazy. Set up a dictionary to store the locations of the lines, then loop through and set the values. Not too bad in the horizontal and vertical direction only... but I'm sure thats where part 2 comes in...
     * Part 2: Yep. here's the diagonals. Thankfully limited to only 45 degrees, that makes things simpler. I can just take if absolute values of the differences between them are the same to check if diagonal, then determine the line from there.... was a little trickier than I anticipated at first, mostly because I had to figure out how to account for the directionality of the pairs. My original code didn't care about that and had to edit to account for it. But makes overall function cleaner for both parts.
+
+* Day 6:
+    * Part 1: Could brute force this. Got hung up knowing a part two was coming where brute force wouldn't work. Low on time. Went to reddit for inspiration. Brute forced part 1 anyways because easy. Solution inspired by https://www.reddit.com/r/adventofcode/comments/r9z49j/comment/hnfis0v/?utm_source=share&utm_medium=web2x&context=3
+    * Part 2: Knew this was coming. Reddit solution was pretty ingenious actually. Just dealing with the group counts. So clean. Wish I could say it was my idea ha. I was on the right track, thinking there was a way to do this by just thinking of each group individually, but couldn't think of how to implement it.
