@@ -26,3 +26,7 @@
 * Day 6:
     * Part 1: Could brute force this. Got hung up knowing a part two was coming where brute force wouldn't work. Low on time. Went to reddit for inspiration. Brute forced part 1 anyways because easy. Solution inspired by https://www.reddit.com/r/adventofcode/comments/r9z49j/comment/hnfis0v/?utm_source=share&utm_medium=web2x&context=3
     * Part 2: Knew this was coming. Reddit solution was pretty ingenious actually. Just dealing with the group counts. So clean. Wish I could say it was my idea ha. I was on the right track, thinking there was a way to do this by just thinking of each group individually, but couldn't think of how to implement it.
+
+* Day 7:
+    * Part 1: Whoo! I know how to do this one. Just check sums of absolute values of data minus each possible position. Super quick. Works great.
+    * Part 2: OK... same as part 1, but need to loop thorugh and sum the total cost at each given distance. I'm sure there's a more elegant way to do this given the time it took to run, but right before I was about to stop the code because it was taking a while it computed. So I'll take the win. Tomorrow will maybe look to see how it can be optimized to run faster.
