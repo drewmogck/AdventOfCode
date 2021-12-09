@@ -30,3 +30,12 @@
 * Day 7:
     * Part 1: Whoo! I know how to do this one. Just check sums of absolute values of data minus each possible position. Super quick. Works great.
     * Part 2: OK... same as part 1, but need to loop thorugh and sum the total cost at each given distance. I'm sure there's a more elegant way to do this given the time it took to run, but right before I was about to stop the code because it was taking a while it computed. So I'll take the win. Tomorrow will maybe look to see how it can be optimized to run faster.
+
+* Day 8:
+    * Part 1: ok part 1 isn't bad, I'm sure part two will be a doozy thoough. Simple count of number of unique numbers. A little dictionary and counting and we are through
+    * Part 2: I think I have an idea of how to do this, but its going to be time consuming. Maybe will come back to this one later, or look for inspiration on the forums. INCOMPLETE RIGHT NOW
+
+* Day 9:
+    * Part 1: Not too bad. Need to index where things are at in a dictionary and just check around each point to see if its a min. Used 99 instead of null at edges just so didn't have to deal with checking values against 'None'.
+    * Part 2: A lot trickier. Had to set up to initialize at the minimums, check the y and x directions for any in a given "basin" then go back and check all the points that were in a given basin the same way. Keep going until all points are checked. Once I figured out the methodology it wasn't too bad. Other than dealing with edge cases (eg left, right, top bottom) which always seem to bite me on these sorts of problems in AoC. Need to clean up the code for readability, but it works.
+
