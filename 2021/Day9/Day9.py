@@ -4,18 +4,19 @@ Day 9
 """
 #PART 1#
 
-#import raw datas
+#import raw data
 Lines = [line.rstrip() for line in open('Day9.txt')]
 
 #define dict to store vals in
 #x,y, up, down, left, right, lowpoint
 heightmap={}
 
-basin=0
-l=0
-risktot=0
+basin=0 #basin indentifier
+l=0 #row number
+risktot=0 #initialize total risk at 0
+
 for line in Lines:
-    i=0
+    i=0 #column number
     for char in line:
         val=int(char)
         if i<len(line)-1:
@@ -36,13 +37,10 @@ for line in Lines:
             down = 99
 
         heightmap[(l,i)]={'val': val, 'left':left, 'right':right, 'up':up, "down": down, 'basin':None, 'checked': False}
-        
-        #print(char, left, right, up, down)
 
-        if val<right and val<left and val<up and val<down:
-            print(char, 'Minimum point')
-            risk=val+1
-            risktot+=risk
+        if val<right and val<left and val<up and val<down: #minimum point
+            risk=val+1 #assign risk val
+            risktot+=risk #add to total risk
             heightmap[(l,i)]['min']=True
             heightmap[(l,i)]['basin']=basin
             basin+=1
@@ -56,10 +54,8 @@ print("Part 1 answer: "+ str(risktot))
 
 #PART 2#
 
-#l=0
-#basin=0
+#function to find any points which have been assigned a basin and haven't yet been checked
 
-#function to find minimums
 def get_basin(my_dict):
     output=[]
     for key, value in my_dict.items():
@@ -71,13 +67,12 @@ def get_basin(my_dict):
     return "key doesn't exist"
 
 
-#define starting points
+#function to loop through all points that haven't been checked that have an assigned basin and check for points in the y and x directions that are also in the same basin.
+
 def basin_loop(basinPoints, hm):
     for p in basinPoints:
         l,i= p
 
-
-        #i=0
         if hm[(l,i)]['val']==99 or hm[(l,i)]['val']==9:
             hm[(l,i)]['basin']=99
             hm[(l,i)]['checked']==True
@@ -133,20 +128,21 @@ def basin_loop(basinPoints, hm):
                 else:
                     break
 
-            hm[(l,i)]['checked']=True
+            hm[(l,i)]['checked']=True #mark that the surroundings (y and x directions) have been checked for this point.
 
     return hm
 
 
-basinPoints = get_basin(heightmap)
-print(basinPoints)
-while i>0:
+basinPoints = get_basin(heightmap) #get all points with basin assigned that haven't been checked
+
+while i>0: #loop as long as there are still points returned from function that haven't been checked
     heightmap = basin_loop(basinPoints, heightmap)
     basinPoints= get_basin(heightmap)
-    print(basinPoints)
+    #print(basinPoints)
     i = len(basinPoints)
 
-#function to calculate numbers in basins
+#function to calculate numbers of cells in each basin
+
 def basin_count(my_dict, n):
     cnt=0
     for key, value in my_dict.items():
@@ -156,22 +152,17 @@ def basin_count(my_dict, n):
  
     return "key doesn't exist"
 
-# print(basin_count(heightmap, 0))
-# print(basin_count(heightmap, 1))
-# print(basin_count(heightmap, 2))
-# print(basin_count(heightmap, 3))
-# print(basin_count(heightmap, 4))
+counts = [] #list to store counts in
 
-counts = []
 n=0
 i = basin_count(heightmap, n)
-while i > 0:
-    print(i)
+
+while i > 0: #loop through each basin - when i=0 all basins have been counted
     counts.append(i)
     n+=1
     i = basin_count(heightmap, n)
 
-top3 = sorted(counts, reverse=True)[:3]
+top3 = sorted(counts, reverse=True)[:3] #get the top three counts per basin
 
-print(top3[0]*top3[1]*top3[2])
+print('Answer to part 2 is :' + str(top3[0]*top3[1]*top3[2]))
 
