@@ -39,3 +39,6 @@
     * Part 1: Not too bad. Need to index where things are at in a dictionary and just check around each point to see if its a min. Used 99 instead of null at edges just so didn't have to deal with checking values against 'None'.
     * Part 2: A lot trickier. Had to set up to initialize at the minimums, check the y and x directions for any in a given "basin" then go back and check all the points that were in a given basin the same way. Keep going until all points are checked. Once I figured out the methodology it wasn't too bad. Other than dealing with edge cases (eg left, right, top bottom) which always seem to bite me on these sorts of problems in AoC. Need to clean up the code for readability, but it works.
 
+* Day 10:
+    * Part 1: Took a bit to think through, but once I figured out how to structure the dict to store the information it wasn't too bad.
+    * Part 2: Love it when planning pays off. The way I set up part 1 was perfect to be able to continue part 2. Pretty simple to get once I figured out exactly what the problem statement was looking for in the answer. Oh yeah and not trying to calculate the full solution with the example input... Doh!
