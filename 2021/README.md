@@ -42,3 +42,7 @@
 * Day 10:
     * Part 1: Took a bit to think through, but once I figured out how to structure the dict to store the information it wasn't too bad.
     * Part 2: Love it when planning pays off. The way I set up part 1 was perfect to be able to continue part 2. Pretty simple to get once I figured out exactly what the problem statement was looking for in the answer. Oh yeah and not trying to calculate the full solution with the example input... Doh!
+
+* Day 11:
+    * Part 1: Trick here was to use energy level 10 as the key rather than >9. This forces them to only flash once. Realized that after getting stuck in an endless loop of flashing the first time I ran the code. Other than that it was just a matter of going slow and steady and makeing sure directions (up, down, up-right, down right etc) were actually defined properly.  Code could use some cleaning but that's for another day.
+    * Part 2: Took me alittle longer than it should have because I forgot to reinitialize the grid so it was counting from 100 starting. Also tried checking for when all values were 9 rather than 0, thinking that would actually be the step right before they all fliped. Before realizing that they don't all flip simultaneously just because they are 9's. Other than those little blips, it was really pretty simple based on the way I set up part 1.
