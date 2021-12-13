@@ -46,3 +46,11 @@
 * Day 11:
     * Part 1: Trick here was to use energy level 10 as the key rather than >9. This forces them to only flash once. Realized that after getting stuck in an endless loop of flashing the first time I ran the code. Other than that it was just a matter of going slow and steady and makeing sure directions (up, down, up-right, down right etc) were actually defined properly.  Code could use some cleaning but that's for another day.
     * Part 2: Took me alittle longer than it should have because I forgot to reinitialize the grid so it was counting from 100 starting. Also tried checking for when all values were 9 rather than 0, thinking that would actually be the step right before they all fliped. Before realizing that they don't all flip simultaneously just because they are 9's. Other than those little blips, it was really pretty simple based on the way I set up part 1.
+
+* Day 12:
+    * Part 1: Messed around for quite a while here (Day13.py). Was getting hung up on how to get through it and pretty sure I was heading down some rabbit holes so I gave it up for the night. Pulled an interesting solution from the Reddit threads https://www.reddit.com/r/adventofcode/comments/rehj2r/comment/ho7x83o/?utm_source=share&utm_medium=web2x&context=3 Plan to come back to this one to better understand the solution because it's really clean but I'm not 100% on how it works.
+    * Part 2: See part 1.
+
+* Day 13:
+    * Part 1: Happy to get back on track. This was a fun one. Got to play around with a lot of numpy functionality to flip/append etc. Use the where clause for the actual overlay. The example being setup to only use exactly equal folds was a bit of a ruse. Got a working solution that instantly blew up on the real data because of course the page isn't always folded down the middle. Was interesting to think about how to set it up to account for the different sizes. Thankfully the folded part never was large enough to overlap and reset the 0 indices or this would have gotten a lot harder.
+    * Part 2: Not bad. Code was already completely set up to run, just had to refresh on how to plot the image from the array. Even made up some ground in the leaderboard instead of losing for a change. Overall really enjoyed this approach tonight and gave me a greater appreciation for the functionality in numpy.
