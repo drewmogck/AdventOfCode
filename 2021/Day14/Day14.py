@@ -86,7 +86,6 @@ char_count = Counter() #initialize new char counter
 
 for pair in pair_counter:
     i, j = pair
-    print(i, j)
     char_count[i]+=pair_counter[pair] #count left value of each pair
 
 char_count[template[-1]] +=1 #accounts for final character
