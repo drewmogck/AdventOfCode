@@ -2,8 +2,10 @@
 Advent of Code 2021
 Day 13
 """
-#PART 1#
 import numpy as np
+import matplotlib.pyplot as plt
+
+#PART 1#
 
 #import raw data
 inputfile='Day13.txt'
@@ -47,8 +49,6 @@ def read_page(input):
 
 page = read_page(Lines)
 
-# print(page)
-
 def get_folds(input):
     f=0
     folds={}
@@ -63,7 +63,6 @@ def get_folds(input):
 folds = get_folds(Lines)
 
 #do folding
-#for fold in [0]:
 
 def folding(fold, page, folds):
     if folds[fold]['folddir']=='x': #fold left
@@ -103,7 +102,6 @@ def folding(fold, page, folds):
         #calculate difference in dimensions
 
         y_dif = p1_shp[0]-p2_shp[0]
-        #print(y_dif)
 
         #place page 2 at bottom of equivilant sized page as page1
         page2_stack = np.zeros((y_dif, p2_shp[1]))
@@ -126,12 +124,5 @@ page = read_page(Lines)
 for fold in folds:
     page = folding(fold, page, folds)
 
-
-import matplotlib.pyplot as plt
-
-def display_img(img):
-    fig = plt.figure(figsize=(12,10))
-    ax = fig.add_subplot(111)
-    ax.imshow(img,cmap='gray')
-
-display_img(page) #part two answer (in image)
+plt.imshow(page)
+plt.show()
